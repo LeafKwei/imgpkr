@@ -1,0 +1,261 @@
+/* 基础颜色定义 */
+* {
+    color: #333333;
+    selection-background-color: #4a86e8;
+    selection-color: #ffffff;
+}
+
+QMainWindow, QDialog, QWidget {
+    background-color: #e8e8e8; /* 从 #f5f5f5 调整为更暗的灰色 */
+}
+
+QPushButton {
+    background-color: #d0d0d0; /* 从 #e0e0e0 调整 */
+    border: 1px solid #a0a0a0; /* 从 #bbbbbb 调整 */
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-height: 25px;
+}
+
+QPushButton:hover {
+    background-color: #c5c5c5; /* 从 #d5d5d5 调整 */
+}
+
+QPushButton:pressed {
+    background-color: #bbbbbb; /* 从 #cccccc 调整 */
+}
+
+QPushButton:disabled {
+    background-color: #d6d6d6; /* 从 #e6e6e6 调整 */
+    color: #888888; /* 从 #999999 调整 */
+    border-color: #b3b3b3; /* 从 #cccccc 调整 */
+}
+
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #f0f0f0; /* 从 #ffffff 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    border-radius: 3px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border-color: #4a86e8;
+}
+
+QComboBox {
+    background-color: #f0f0f0; /* 从 #ffffff 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    border-radius: 3px;
+    padding: 5px;
+    min-height: 25px;
+}
+
+QComboBox:editable {
+    background: #f0f0f0; /* 从 #ffffff 调整 */
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+    background: #d0d0d0; /* 从 #e0e0e0 调整 */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #a0a0a0; /* 从 #cccccc 调整 */
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/down_arrow.png);
+}
+
+QMenuBar {
+    background-color: #d8d8d8; /* 从 #e8e8e8 调整 */
+}
+
+QMenuBar::item {
+    background: transparent;
+}
+
+QMenuBar::item:selected {
+    background: #c5c5c5; /* 从 #d5d5d5 调整 */
+}
+
+QMenu {
+    background-color: #e0e0e0; /* 从 #f0f0f0 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+}
+
+QMenu::item {
+    padding: 2px 20px 2px 20px;
+}
+
+QMenu::item:selected {
+    background-color: #c5c5c5; /* 从 #d5d5d5 调整 */
+}
+
+QToolBar {
+    background-color: #d8d8d8; /* 从 #e8e8e8 调整 */
+    border: none;
+}
+
+QToolButton {
+    background-color: transparent;
+    border: none;
+    padding: 3px;
+}
+
+QToolButton:hover {
+    background-color: #c5c5c5; /* 从 #d5d5d5 调整 */
+}
+
+QTabWidget::pane {
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    background-color: #e8e8e8; /* 从 #f5f5f5 调整 */
+}
+
+QTabBar::tab {
+    background-color: #d0d0d0; /* 从 #e0e0e0 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    border-bottom: none;
+    padding: 5px 10px;
+    margin-right: 2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+QTabBar::tab:selected {
+    background-color: #e8e8e8; /* 从 #f5f5f5 调整 */
+    color: #333333;
+}
+
+QTabBar::tab:!selected {
+    color: #555555; /* 从 #666666 调整 */
+}
+
+QStatusBar {
+    background-color: #d8d8d8; /* 从 #e8e8e8 调整 */
+    border-top: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+}
+
+QScrollBar:horizontal {
+    background: #d0d0d0; /* 从 #e0e0e0 调整 */
+    height: 15px;
+    margin: 0px 15px 0 15px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #a0a0a0; /* 从 #bbbbbb 调整 */
+    min-width: 20px;
+    border-radius: 2px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 15px;
+    background: #c5c5c5; /* 从 #d5d5d5 调整 */
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal {
+    subcontrol-position: right;
+}
+
+QScrollBar:vertical {
+    background: #d0d0d0; /* 从 #e0e0e0 调整 */
+    width: 15px;
+    margin: 15px 0 15px 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #a0a0a0; /* 从 #bbbbbb 调整 */
+    min-height: 20px;
+    border-radius: 2px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 15px;
+    background: #c5c5c5; /* 从 #d5d5d5 调整 */
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical {
+    subcontrol-position: bottom;
+}
+
+QTreeView, QListView, QTableView {
+    alternate-background-color: #e0e0e0; /* 从 #f0f0f0 调整 */
+    background-color: #e8e8e8; /* 从 #f5f5f5 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    gridline-color: #b3b3b3; /* 从 #dddddd 调整 */
+}
+
+QHeaderView::section {
+    background-color: #d0d0d0; /* 从 #e0e0e0 调整 */
+    color: #333333;
+    padding: 4px;
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+}
+
+QProgressBar {
+    background-color: #d0d0d0; /* 从 #e0e0e0 调整 */
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    border-radius: 2px;
+    text-align: center;
+}
+
+QProgressBar::chunk {
+    background-color: #4a86e8;
+}
+
+QSlider::groove:horizontal {
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    height: 8px;
+    background: #d0d0d0; /* 从 #e0e0e0 调整 */
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #a0a0a0; /* 从 #bbbbbb 调整 */
+    border: 1px solid #888888; /* 从 #999999 调整 */
+    width: 16px;
+    margin: -4px 0;
+    border-radius: 8px;
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked, QRadioButton::indicator:unchecked {
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    background: #f0f0f0; /* 从 #ffffff 调整 */
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/check.png);
+}
+
+QRadioButton::indicator:checked {
+    image: url(:/icons/dot.png);
+}
+
+QGroupBox {
+    border: 1px solid #a0a0a0; /* 从 #cccccc 调整 */
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 5px;
+}
+    

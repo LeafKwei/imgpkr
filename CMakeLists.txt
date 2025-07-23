@@ -23,6 +23,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(imgpkr
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+		defaultwidget.h defaultwidget.cpp defaultwidget.ui
+		resource.qrc
+		mainwidget.h mainwidget.cpp mainwidget.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET imgpkr APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
