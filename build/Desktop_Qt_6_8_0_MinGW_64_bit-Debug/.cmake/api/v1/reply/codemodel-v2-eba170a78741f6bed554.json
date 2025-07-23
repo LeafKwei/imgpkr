@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-b41fdcb20b552af03723.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "imgpkr",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "imgpkr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgpkr-Debug-bc4c58576ee05cf79235.json",
+					"name" : "imgpkr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "imgpkr_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgpkr_autogen-Debug-dfad7cedaa9d5d715073.json",
+					"name" : "imgpkr_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "imgpkr_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgpkr_autogen_timestamp_deps-Debug-8b8aa7af8927a023f389.json",
+					"name" : "imgpkr_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug",
+		"source" : "D:/K_File/K_Project/qt/imgpkr"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

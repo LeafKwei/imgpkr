@@ -1,0 +1,9 @@
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/imgpkr.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/imgpkr_autogen_timestamp_deps.dir
+D:/K_File/K_Project/qt/imgpkr/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/imgpkr_autogen.dir
