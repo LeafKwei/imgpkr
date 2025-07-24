@@ -27,9 +27,13 @@ private:
     DefaultWidget *m_wgtDefault;
     MainWidget *m_wgtMain;
     
-    
     void initialize();
     void createCoreWidget();
     void changeCoreWidget(WindowState state);
+    void initConnection();
+    
+private slots:
+    void atActionPackClicked();
+    void atActionUnpackClicked();
 };
 #endif // MAINWINDOW_H

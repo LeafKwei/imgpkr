@@ -23,7 +23,7 @@
       </size>
      </property>
      <property name="text">
-      <string>按Ctrl+N创建新项目</string>
+      <string>按Alt+N创建新项目</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>

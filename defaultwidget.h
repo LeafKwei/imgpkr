@@ -12,11 +12,12 @@ class DefaultWidget : public QWidget
     Q_OBJECT
 
 public:
+    Ui::DefaultWidget *ui;
+    
     explicit DefaultWidget(QWidget *parent = nullptr);
     ~DefaultWidget();
 
 private:
-    Ui::DefaultWidget *ui;
 };
 
 #endif // DEFAULTWIDGET_H
