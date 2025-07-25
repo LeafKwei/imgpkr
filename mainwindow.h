@@ -31,9 +31,10 @@ private:
     void createCoreWidget();
     void changeCoreWidget(WindowState state);
     void initConnection();
+    void exitMainWindow();
     
 private slots:
-    void atActionPackClicked();
-    void atActionUnpackClicked();
+    void atMenuNewTriggered(QAction *act);
+    void atProjectItemChange(int count);
 };
 #endif // MAINWINDOW_H

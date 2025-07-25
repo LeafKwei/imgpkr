@@ -12,12 +12,11 @@ class UnpackedWidget : public QWidget
     Q_OBJECT
 
 public:
-    Ui::UnpackedWidget *ui;
-    
     explicit UnpackedWidget(QWidget *parent = nullptr);
     ~UnpackedWidget();
 
 private:
+    Ui::UnpackedWidget *ui;
 };
 
 #endif // UNPACKEDWIDGET_H

@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/resource/icon/icon.png"));
     initialize();
 }
 
@@ -30,37 +31,45 @@ void MainWindow::createCoreWidget(){
 void MainWindow::changeCoreWidget(WindowState state){
     if(state == m_winstate) return;
     
+    decltype(m_wgtMain) bakMain;
+    decltype(m_wgtDefault) bakDefault;
+    
     switch(state){
         default:
         case WindowState::Default:
             m_winstate = state;
-            m_wgtMain =  takeCentralWidget();
+            bakMain = dynamic_cast<MainWidget*>(takeCentralWidget());
+            if(bakMain != nullptr) m_wgtMain = bakMain;
             setCentralWidget(m_wgtDefault);
             break;
         case WindowState::Main:
             m_winstate = state;
-            m_wgtDefault = takeCentralWidget();
+            bakDefault = dynamic_cast<DefaultWidget*>(takeCentralWidget());
+            if(bakDefault != nullptr) m_wgtDefault = bakDefault;
             setCentralWidget(m_wgtMain);
             break;
     }
 }
 
 void MainWindow::initConnection(){
-    
+    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuNewTriggered(QAction*)));
+    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));
+    connect(m_wgtMain, SIGNAL(projectItemChange(int)), this, SLOT(atProjectItemChange(int)));
+}
+
+void MainWindow::exitMainWindow(){
+    QCoreApplication::exit(0);
 }
 
 //===================== Slots =====================
-void MainWindow::atActionPackClicked(){
-    auto wgtProject = m_wgtMain -> ui -> wgtProject;
-    wgtProject -> addWidget(new PackedWidget());
+void MainWindow::atMenuNewTriggered(QAction *act){
+    if(act -> text() == "退出") exitMainWindow();
 }
 
-void MainWindow::atActionUnpackClicked(){
-
+void MainWindow::atProjectItemChange(int count){
+    if(count > 0) changeCoreWidget(WindowState::Main);
+    else changeCoreWidget(WindowState::Default);
 }
-
-
-
 
 
 

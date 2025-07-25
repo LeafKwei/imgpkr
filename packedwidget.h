@@ -12,13 +12,11 @@ class PackedWidget : public QWidget
     Q_OBJECT
 
 public:
-    Ui::PackedWidget *ui;
-    
     explicit PackedWidget(QWidget *parent = nullptr);
     ~PackedWidget();
 
 private:
-
+    Ui::PackedWidget *ui;
 };
 
 #endif // PACKEDWIDGET_H

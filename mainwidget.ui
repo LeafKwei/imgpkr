@@ -13,17 +13,15 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,7">
    <item>
-    <widget class="QListView" name="wgtProjectItem"/>
+    <widget class="QListWidget" name="wgtProjectItem"/>
    </item>
    <item>
     <widget class="QStackedWidget" name="wgtProject">
      <property name="currentIndex">
-      <number>1</number>
+      <number>-1</number>
      </property>
-     <widget class="QWidget" name="page"/>
-     <widget class="QWidget" name="page_2"/>
     </widget>
    </item>
   </layout>

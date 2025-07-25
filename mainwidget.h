@@ -12,10 +12,22 @@ class MainWidget : public QWidget
     Q_OBJECT
 
 public:
-    Ui::MainWidget *ui;
-    
     explicit MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
+    
+private:
+    Ui::MainWidget *ui;
+    
+    void initialize();
+    void initConnection();
+    void doActionPack();
+    void doActionUnpack();
+    
+signals:
+    void projectItemChange(int);
+    
+private slots:
+    void atMenuNewTriggered(QAction *act);
 };
 
 #endif // MAINWIDGET_H
