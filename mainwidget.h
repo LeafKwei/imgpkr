@@ -22,6 +22,7 @@ private:
     void initConnection();
     void doActionPack();
     void doActionUnpack();
+    void doActionSave();
     
 signals:
     void projectItemChange(int);
