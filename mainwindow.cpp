@@ -54,6 +54,7 @@ void MainWindow::changeCoreWidget(WindowState state){
 void MainWindow::initConnection(){
     connect(ui -> menuNew, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuNewTriggered(QAction*)));
     connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));
+    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuEditTriggered(QAction*)));
     connect(m_wgtMain, SIGNAL(projectItemChange(int)), this, SLOT(atProjectItemChange(int)));
 }
 
