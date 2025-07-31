@@ -17,6 +17,13 @@ public:
 
 private:
     Ui::PackedWidget *ui;
+    void initialize();
+    void initConnection();
+    
+private slots:
+    void atBtnInputClicked(bool b);
+    void atBtnOutputClicked(bool b);
+    void atBtnPackClicked(bool b);
 };
 
 #endif // PACKEDWIDGET_H
