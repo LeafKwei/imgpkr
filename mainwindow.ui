@@ -42,7 +42,7 @@
     <property name="title">
      <string>帮助 &amp;H</string>
     </property>
-    <addaction name="actHelp"/>
+    <addaction name="actUsage"/>
     <addaction name="actVersion"/>
    </widget>
    <addaction name="menuNew"/>
@@ -82,7 +82,7 @@
     <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="actHelp">
+  <action name="actUsage">
    <property name="text">
     <string>使用说明</string>
    </property>

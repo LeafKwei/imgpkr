@@ -70,3 +70,9 @@ void MainWidget::atMenuNewTriggered(QAction *act){
 void MainWidget::atMenuEditTriggered(QAction *act){
     if(act -> text() == "删除") doActionDelete();
 }
+
+
+
+
+
+

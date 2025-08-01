@@ -32,9 +32,13 @@ private:
     void changeCoreWidget(WindowState state);
     void initConnection();
     void exitMainWindow();
+    void doActionUsage();
+    void doActionVersion();
     
 private slots:
     void atMenuNewTriggered(QAction *act);
+    void atMenuEditTriggered(QAction *act);
+    void atMenuHelpTriggered(QAction *act);
     void atProjectItemChange(int count);
 };
 #endif // MAINWINDOW_H

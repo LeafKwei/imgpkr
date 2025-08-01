@@ -17,6 +17,13 @@ public:
 
 private:
     Ui::UnpackedWidget *ui;
+    void initialize();
+    void initConnection();
+    
+private slots:
+    void atBtnInputClicked(bool b);
+    void atBtnOutputClicked(bool b);
+    void atBtnUnpackClicked(bool b);
 };
 
 #endif // UNPACKEDWIDGET_H

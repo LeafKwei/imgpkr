@@ -53,8 +53,10 @@ void MainWindow::changeCoreWidget(WindowState state){
 
 void MainWindow::initConnection(){
     connect(ui -> menuNew, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuNewTriggered(QAction*)));
-    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));
     connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuEditTriggered(QAction*)));
+    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));
+    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), this, SLOT(atMenuEditTriggered(QAction*)));
+    connect(ui -> menuHelp, SIGNAL(triggered(QAction*)), this, SLOT(atMenuHelpTriggered(QAction*)));
     connect(m_wgtMain, SIGNAL(projectItemChange(int)), this, SLOT(atProjectItemChange(int)));
 }
 
@@ -62,9 +64,26 @@ void MainWindow::exitMainWindow(){
     QCoreApplication::exit(0);
 }
 
+void MainWindow::doActionUsage(){
+
+}
+
+void MainWindow::doActionVersion(){
+
+}
+
 //===================== Slots =====================
 void MainWindow::atMenuNewTriggered(QAction *act){
     if(act -> text() == "退出") exitMainWindow();
+}
+
+void MainWindow::atMenuEditTriggered(QAction *act){
+    
+}
+
+void MainWindow::atMenuHelpTriggered(QAction *act){
+    if(act -> text() == "使用说明") doActionUsage();
+    if(act -> text() == "版本信息") doActionVersion();
 }
 
 void MainWindow::atProjectItemChange(int count){
