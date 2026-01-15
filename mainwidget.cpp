@@ -3,6 +3,10 @@
 #include "unpackedwidget.h"
 #include "ui_mainwidget.h"
 
+/**
+ * MainWiget用于提供主要的功能框架，包括项目条目、打包、解包界面。当用户新建项目时，MainWidget才会显示，
+ * 在没有任何项目存在的情况下，mainwindow将默认显示DefaultWidet
+ */
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
@@ -25,24 +29,34 @@ void MainWidget::initConnection(){
 }
 
 void MainWidget::deleteItem(int index){
+    /* QListWidget的removeItemWidget函数只会移除item，但不会delete相关对象，因此需要先takeItem后手动删除 */
     auto item = ui -> wgtProjectItem -> takeItem(index);
     ui -> wgtProjectItem -> removeItemWidget(item);
     delete item;
 }
 
 void MainWidget::deleteProject(int index){
+    /* 同样的，QStackWidget的removeWidget函数也不会删除对象，需要获取到对象并手动删除 */
     auto project = ui -> wgtProject -> widget(index);
     ui -> wgtProject -> removeWidget(project);
     delete project;
 }
 
 void MainWidget::doActionPack(){
+    /**
+     * 创建打包窗口，需要在左侧QListWidget列表窗口创建项目条目，并同时在右侧的QStackWidget中创建窗口对象
+     * 随后发送信号给mainwindow以更新主窗口视图
+     */
     ui -> wgtProjectItem -> addItem("新建打包项目");
     ui -> wgtProject -> addWidget(new PackedWidget());
     emit projectItemChange(ui -> wgtProjectItem -> count());
 }
 
 void MainWidget::doActionUnpack(){
+    /**
+     * 创建解包窗口，需要在左侧QListWidget列表窗口创建项目条目，并同时在右侧的QStackWidget中创建窗口对象
+     * 随后发送信号给mainwindow以更新主窗口视图
+     */
     ui -> wgtProjectItem -> addItem("新建解包项目");
     ui -> wgtProject -> addWidget(new UnpackedWidget());
     emit projectItemChange(ui -> wgtProjectItem -> count());
@@ -53,6 +67,11 @@ void MainWidget::doActionSave(){
 }
 
 void MainWidget::doActionDelete(){
+    /**
+     * 点击菜单中的删除按钮时，删除选中位置的打包\解包项目
+     * 首先获取到该位置的索引号，然后从QListWidget和QStackWidget中删除索引对应的条目和视图对象，删除完毕后，
+     * 发送信号到mainwindow，以更新删除后的主窗口视图
+     */
     auto index = ui -> wgtProjectItem -> currentIndex().row();
     if(index == -1) return; //if no item is selected yet.
     deleteItem(index);      //these two functions must use the same index which should be got before performing deletion.

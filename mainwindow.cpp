@@ -18,8 +18,8 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::initialize(){
-    createCoreWidget();
-    changeCoreWidget(WindowState::Default);
+    createCoreWidget();                       //创建MainWidget和DefaultWidget对象
+    changeCoreWidget(WindowState::Default);   //将mainwindow的主窗口视图设置为DefaultWidget
     initConnection();
 }
 
@@ -28,6 +28,11 @@ void MainWindow::createCoreWidget(){
     m_wgtMain = new MainWidget();
 }
 
+/**
+ * 根据给定的mianwindow窗口状态设置主窗口视图
+ * 如果状态是Default，则将主窗口设置为DefaultWidget，并备份原主窗口对象
+ * 如果状态是Main，则将主窗口设置为MainWiget，并备份原主窗口对象
+ */
 void MainWindow::changeCoreWidget(WindowState state){
     if(state == m_winstate) return;
     
@@ -39,7 +44,7 @@ void MainWindow::changeCoreWidget(WindowState state){
         case WindowState::Default:
             m_winstate = state;
             bakMain = dynamic_cast<MainWidget*>(takeCentralWidget());
-            if(bakMain != nullptr) m_wgtMain = bakMain;
+            if(bakMain != nullptr) m_wgtMain = bakMain;  //在程序最初启动时，takeCentralWidget会获取到一个nullptr，此处需要排除该情况
             setCentralWidget(m_wgtDefault);
             break;
         case WindowState::Main:
