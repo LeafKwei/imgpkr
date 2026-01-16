@@ -19,6 +19,9 @@ set(PROJECT_SOURCES
         mainwindow.ui
 )
 
+include_directories("inlcude")
+link_directories("lib")
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(imgpkr
         MANUAL_FINALIZATION
@@ -28,6 +31,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 		mainwidget.h mainwidget.cpp mainwidget.ui
 		packedwidget.h packedwidget.cpp packedwidget.ui
 		unpackedwidget.h unpackedwidget.cpp unpackedwidget.ui
+		3rdimpl/qtpngreader.h 3rdimpl/qtpngreader.cpp
+		3rdimpl/qtpngwriter.h 3rdimpl/qtpngwriter.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET imgpkr APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -47,7 +52,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(imgpkr PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(imgpkr PRIVATE Qt${QT_VERSION_MAJOR}::Widgets csc packer)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

@@ -25,18 +25,18 @@ void UnpackedWidget::initConnection(){
     connect(ui -> btnUnpack, SIGNAL(clicked(bool)), this, SLOT(atBtnUnpackClicked(bool)));
 }
 
+/* 选择输入文件所在的路径 */
 void UnpackedWidget::atBtnInputClicked(bool b){
-    QString path = QFileDialog::getExistingDirectory(
-        this, tr("Open directory"), "",
-        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString path = QFileDialog::getOpenFileName(this, tr("选择一个文件"), "*.png", nullptr);
         
     if(path.isEmpty()) return;
     ui -> editInput -> setText(path);
 }
 
+/* 输出输出文件所在的目录路径 */
 void UnpackedWidget::atBtnOutputClicked(bool b){
     QString path = QFileDialog::getExistingDirectory(
-        this, tr("Open directory"), "",
+        this, tr("选择一个目录"), "",
         QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
         
     if(path.isEmpty()) return;

@@ -19,6 +19,8 @@ private:
     Ui::PackedWidget *ui;
     void initialize();
     void initConnection();
+    bool checkPrecondition();
+    int  getAllPictureNameFrom(QVector<QString> &names, QString path);
     
 private slots:
     void atBtnInputClicked(bool b);

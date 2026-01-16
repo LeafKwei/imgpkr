@@ -57,12 +57,12 @@ void MainWindow::changeCoreWidget(WindowState state){
 }
 
 void MainWindow::initConnection(){
-    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuNewTriggered(QAction*)));
-    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuEditTriggered(QAction*)));
-    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));
-    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), this, SLOT(atMenuEditTriggered(QAction*)));
-    connect(ui -> menuHelp, SIGNAL(triggered(QAction*)), this, SLOT(atMenuHelpTriggered(QAction*)));
-    connect(m_wgtMain, SIGNAL(projectItemChange(int)), this, SLOT(atProjectItemChange(int)));
+    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuNewTriggered(QAction*)));   //点击主窗口的新建
+    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), m_wgtMain, SLOT(atMenuEditTriggered(QAction*))); //点击主窗口的编辑
+    connect(ui -> menuNew, SIGNAL(triggered(QAction*)), this, SLOT(atMenuNewTriggered(QAction*)));        //点击主窗口的新建
+    connect(ui -> menuEdit, SIGNAL(triggered(QAction*)), this, SLOT(atMenuEditTriggered(QAction*)));      //点击主窗口的编辑
+    connect(ui -> menuHelp, SIGNAL(triggered(QAction*)), this, SLOT(atMenuHelpTriggered(QAction*)));      //点击主窗口的帮助
+    connect(m_wgtMain, SIGNAL(projectItemChange(int)), this, SLOT(atProjectItemChange(int)));             //当主窗口的QListWidget内的条目发送改变时
 }
 
 void MainWindow::exitMainWindow(){
