@@ -29,10 +29,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 		defaultwidget.h defaultwidget.cpp defaultwidget.ui
 		resource.qrc
 		mainwidget.h mainwidget.cpp mainwidget.ui
-		packedwidget.h packedwidget.cpp packedwidget.ui
+		
 		unpackedwidget.h unpackedwidget.cpp unpackedwidget.ui
 		3rdimpl/qtpngreader.h 3rdimpl/qtpngreader.cpp
 		3rdimpl/qtpngwriter.h 3rdimpl/qtpngwriter.cpp
+		packedwidget.cpp packedwidget.h packedwidget.ui
+		
+		
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET imgpkr APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

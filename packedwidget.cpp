@@ -1,4 +1,5 @@
 #include <QDir>
+#include <QThread>
 #include <QFileDialog>
 #include <QMessageBox>
 #include "packedwidget.h"
@@ -18,13 +19,22 @@ PackedWidget::~PackedWidget()
 }
 
 void PackedWidget::initialize(){
+    initComponent();
     initConnection();
+}
+
+void PackedWidget::initComponent(){
+    m_dlgProgbar = new QProgressDialog(this);
+    m_dlgProgbar -> reset();  //reset函数会调用QProgressDialog内部的stop函数，避免其创建后自动弹出
+    m_dlgProgbar -> setLabelText(tr("处理中..."));
+    m_dlgProgbar -> setCancelButtonText("取消");
 }
 
 void PackedWidget::initConnection(){
     connect(ui -> btnInput, SIGNAL(clicked(bool)), this, SLOT(atBtnInputClicked(bool)));
     connect(ui -> btnOutput, SIGNAL(clicked(bool)), this, SLOT(atBtnOutputClicked(bool)));
     connect(ui -> btnPack, SIGNAL(clicked(bool)), this, SLOT(atBtnPackClicked(bool)));
+    connect(m_dlgProgbar, SIGNAL(canceled()), this, SLOT(atPackCanceled()));
 }
 
 /* 检查打包前的所有预置条件是否满足 */
@@ -54,6 +64,24 @@ int PackedWidget::getAllPictureNameFrom(QVector<QString> &names, QString path){
     }
     
     return names.size();
+}
+
+int PackedWidget::packImage(const QVector<QString> &filenames, const QString &inpath, const QString &outpath){
+    auto size = filenames.size();
+    decltype(size) idx = 0;
+    
+    m_dlgProgbar -> setMinimum(0);
+    m_dlgProgbar -> setMaximum(size);
+    m_dlgProgbar -> show();
+    
+    for(; (idx < size) && m_contpack; idx++){
+        //todo packing image at here
+        
+        m_dlgProgbar -> setValue(idx);
+    }   
+    
+    m_dlgProgbar -> setValue(size);
+    return idx;
 }
 
 /* 选择输入文件所在的目录路径 */
@@ -93,5 +121,10 @@ void PackedWidget::atBtnPackClicked(bool b){
         return;
     }
     
-    //todo
+    m_contpack = true;
+    packImage(filenames, inpath, outpath);
+}
+
+void PackedWidget::atPackCanceled(){
+    m_contpack = false;
 }

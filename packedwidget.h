@@ -2,6 +2,7 @@
 #define PACKEDWIDGET_H
 
 #include <QWidget>
+#include <QProgressDialog>
 
 namespace Ui {
 class PackedWidget;
@@ -16,16 +17,27 @@ public:
     ~PackedWidget();
 
 private:
+    bool m_contpack;
     Ui::PackedWidget *ui;
+    QProgressDialog *m_dlgProgbar;
+    
     void initialize();
+    void initComponent();
     void initConnection();
     bool checkPrecondition();
     int  getAllPictureNameFrom(QVector<QString> &names, QString path);
-    
+    int  packImage(const QVector<QString> &filenames, const QString &inpath, const QString &outpath);
+
+signals:
+    void startPack(int cnt);
+    void increProgbar(int inc);
+    void donePack();
+
 private slots:
     void atBtnInputClicked(bool b);
     void atBtnOutputClicked(bool b);
     void atBtnPackClicked(bool b);
+    void atPackCanceled();
 };
 
 #endif // PACKEDWIDGET_H

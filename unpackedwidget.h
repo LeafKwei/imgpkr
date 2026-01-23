@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::UnpackedWidget *ui;
+    
     void initialize();
     void initConnection();
     
