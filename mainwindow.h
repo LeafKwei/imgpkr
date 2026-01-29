@@ -35,6 +35,8 @@ private:
     void doActionUsage();
     void doActionVersion();
     
+/////////////////////////////////////////////////////////////////////////
+    
 private slots:
     void atMenuNewTriggered(QAction *act);
     void atMenuEditTriggered(QAction *act);

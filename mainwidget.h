@@ -2,6 +2,7 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
+#include "utility/taskthreadpool.h"
 
 namespace Ui {
 class MainWidget;
@@ -17,6 +18,7 @@ public:
     
 private:
     Ui::MainWidget *ui;
+    TaskThreadPool m_threadpool;
     
     void initialize();
     void initConnection();
@@ -27,12 +29,14 @@ private:
     void doActionSave();
     void doActionDelete();
     
-signals:
-    void projectItemChange(int);
-    
+/////////////////////////////////////////////////////////////////////////
+
 private slots:
     void atMenuNewTriggered(QAction *act);
     void atMenuEditTriggered(QAction *act);
+    
+signals:
+    void projectItemChange(int);
 };
 
 #endif // MAINWIDGET_H

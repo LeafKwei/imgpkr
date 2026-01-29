@@ -34,6 +34,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 		3rdimpl/qtpngreader.h 3rdimpl/qtpngreader.cpp
 		3rdimpl/qtpngwriter.h 3rdimpl/qtpngwriter.cpp
 		packedwidget.cpp packedwidget.h packedwidget.ui
+		utility/taskthreadpool.h utility/taskthreadpool.cpp
+		utility/taskthread.h utility/taskthread.cpp
+		utility/task.h utility/task.cpp
+		utility/taskqueue.h utility/taskqueue.cpp
+		utility/waiter.h utility/waiter.cpp
 		
 		
     )

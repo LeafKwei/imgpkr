@@ -81,6 +81,7 @@ int PackedWidget::packImage(const QVector<QString> &filenames, const QString &in
     }   
     
     m_dlgProgbar -> setValue(size);
+
     return idx;
 }
 

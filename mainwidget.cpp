@@ -10,6 +10,7 @@
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
+    , m_threadpool(this, 9)
 {
     ui->setupUi(this);
     initialize();
@@ -21,6 +22,7 @@ MainWidget::~MainWidget()
 }
 
 void MainWidget::initialize(){
+    m_threadpool.pushTask(nullptr);
     initConnection();
 }
 
