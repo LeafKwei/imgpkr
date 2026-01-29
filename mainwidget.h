@@ -18,6 +18,7 @@ public:
     
 private:
     Ui::MainWidget *ui;
+    TaskQueue      m_tskque;
     TaskThreadPool m_threadpool;
     
     void initialize();

@@ -25,6 +25,8 @@ void UnpackedWidget::initConnection(){
     connect(ui -> btnUnpack, SIGNAL(clicked(bool)), this, SLOT(atBtnUnpackClicked(bool)));
 }
 
+///////////////////////////////////////////////////////////////////////// SLOT
+
 /* 选择输入文件所在的路径 */
 void UnpackedWidget::atBtnInputClicked(bool b){
     QString path = QFileDialog::getOpenFileName(this, tr("选择一个文件"), "*.png", nullptr);

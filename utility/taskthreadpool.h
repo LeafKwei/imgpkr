@@ -5,8 +5,8 @@
 #include <QVector>
 #include <QMutex>
 #include <QWaitCondition>
+#include "ONLYTEST.h"
 #include "taskqueue.h"
-#include "waiter.h"
 
 class TaskThread;
 
@@ -14,12 +14,10 @@ class TaskThreadPool : public QObject
 {
     Q_OBJECT
 public:
-    explicit TaskThreadPool(QObject *parent, int trdcnt);
-    void pushTask(Task *task);
+    explicit TaskThreadPool(QObject *parent, int trdcnt, TaskQueue *tskque);
     
 private:
-    Waiter    m_cond_hastask;
-    TaskQueue m_taskqueue;
+    TaskQueue *m_tskque;
     QVector<TaskThread*> m_threads;
     
     void initThreads(int trdcnt);

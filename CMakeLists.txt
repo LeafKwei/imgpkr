@@ -19,8 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
 )
 
-include_directories("inlcude")
-link_directories("lib")
+include_directories("3rdinclude" ".")
+link_directories("3rdlib")
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(imgpkr
@@ -36,9 +36,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 		packedwidget.cpp packedwidget.h packedwidget.ui
 		utility/taskthreadpool.h utility/taskthreadpool.cpp
 		utility/taskthread.h utility/taskthread.cpp
-		utility/task.h utility/task.cpp
+		utility/task.h 
 		utility/taskqueue.h utility/taskqueue.cpp
-		utility/waiter.h utility/waiter.cpp
+		utility/ONLYTEST.h
+		task/taskpack.h task/taskpack.cpp
+		task/taskunpack.h task/taskunpack.cpp
+		
 		
 		
     )

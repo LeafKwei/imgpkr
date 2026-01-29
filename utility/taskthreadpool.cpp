@@ -1,19 +1,22 @@
 #include "taskthread.h"
 #include "taskthreadpool.h"
 
-TaskThreadPool::TaskThreadPool(QObject *parent, int trdcnt)
+TaskThreadPool::TaskThreadPool(QObject *parent, int trdcnt, TaskQueue *tskque)
     : QObject{parent}
+    , m_tskque(tskque)
 {
     initThreads(trdcnt);
 }
 
 void TaskThreadPool::pushTask(Task *task){
-    m_waiter.notifyOne();
+    
 }
 
 void TaskThreadPool::initThreads(int trdcnt){
     for(int i = 0; i < trdcnt; i++){
-        m_threads.push_back(new TaskThread(this, &m_taskqueue, &m_waiter));
+        auto thread = new TaskThread(this, &m_tskque);
+        connect(thread, SIGNAL(threadTaskDone(int)), this, SLOT(atThreadTaskDone(int)));
+        m_threads.push_back(thread);
     }
     
     auto size = m_threads.size();
@@ -23,5 +26,5 @@ void TaskThreadPool::initThreads(int trdcnt){
 }
 
 void TaskThreadPool::atThreadTaskDone(int id){
-
+    emit taskDone(id);
 }

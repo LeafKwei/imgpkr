@@ -77,7 +77,7 @@ void MainWindow::doActionVersion(){
 
 }
 
-//===================== Slots =====================
+///////////////////////////////////////////////////////////////////////// SLOT
 void MainWindow::atMenuNewTriggered(QAction *act){
     if(act -> text() == "退出") exitMainWindow();
 }

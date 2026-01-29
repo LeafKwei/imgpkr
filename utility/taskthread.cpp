@@ -1,16 +1,20 @@
 #include <QtDebug>
 #include "taskthread.h"
 
-TaskThread::TaskThread(QObject *parent, TaskQueue *tskque, Waiter *cond_hastask)
+TaskThread::TaskThread(QObject *parent, TaskQueue *tskque)
     : QThread{parent}
     , m_tskque(tskque)
-    , m_cond_hastask(cond_hastask) 
 {}
 
 void TaskThread::run(){
-    while(1){
-        qDebug() << "Running...";
-        m_cond_hastask -> wait();
-        qDebug() << "Running2...";
+    while(true){
+        auto tp = m_tskque -> takeTask();
+        auto okcode = tp -> executeTask();
+    
+        if(okcode){
+            emit threadTaskDone(-(tp -> id()));
+        }
+        
+        emit threadTaskDone(tp -> id());
     }
 }

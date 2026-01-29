@@ -81,7 +81,7 @@ void MainWidget::doActionDelete(){
     emit projectItemChange(ui -> wgtProjectItem -> count());
 }
 
-//============== Slots ===================
+///////////////////////////////////////////////////////////////////////// SLOT
 void MainWidget::atMenuNewTriggered(QAction *act){
     if(act -> text() == "打包") doActionPack();
     if(act -> text() == "解包") doActionUnpack();

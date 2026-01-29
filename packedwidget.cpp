@@ -1,6 +1,4 @@
-#include <QDir>
 #include <QThread>
-#include <QFileDialog>
 #include <QMessageBox>
 #include "packedwidget.h"
 #include "ui_packedwidget.h"
@@ -51,39 +49,7 @@ bool PackedWidget::checkPrecondition(){
     return true;
 }
 
-int PackedWidget::getAllPictureNameFrom(QVector<QString> &names, QString path){
-    QDir dir(path);
-    
-    if(!dir.exists()){
-        return 0;
-    }
-    
-    const QStringList &files = dir.entryList(QStringList("*.png"));
-    for(auto &f : files){
-        names.push_back(f);
-    }
-    
-    return names.size();
-}
-
-int PackedWidget::packImage(const QVector<QString> &filenames, const QString &inpath, const QString &outpath){
-    auto size = filenames.size();
-    decltype(size) idx = 0;
-    
-    m_dlgProgbar -> setMinimum(0);
-    m_dlgProgbar -> setMaximum(size);
-    m_dlgProgbar -> show();
-    
-    for(; (idx < size) && m_contpack; idx++){
-        //todo packing image at here
-        
-        m_dlgProgbar -> setValue(idx);
-    }   
-    
-    m_dlgProgbar -> setValue(size);
-
-    return idx;
-}
+///////////////////////////////////////////////////////////////////////// SLOT
 
 /* 选择输入文件所在的目录路径 */
 void PackedWidget::atBtnInputClicked(bool b){
@@ -123,7 +89,7 @@ void PackedWidget::atBtnPackClicked(bool b){
     }
     
     m_contpack = true;
-    packImage(filenames, inpath, outpath);
+    //todo 发送打包信号到mainwidget
 }
 
 void PackedWidget::atPackCanceled(){

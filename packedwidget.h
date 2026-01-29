@@ -25,8 +25,6 @@ private:
     void initComponent();
     void initConnection();
     bool checkPrecondition();
-    int  getAllPictureNameFrom(QVector<QString> &names, QString path);
-    int  packImage(const QVector<QString> &filenames, const QString &inpath, const QString &outpath);
 
 /////////////////////////////////////////////////////////////////////////
 
