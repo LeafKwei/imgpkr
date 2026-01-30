@@ -2,6 +2,7 @@
 #define UNPACKEDWIDGET_H
 
 #include <QWidget>
+#include "utility/task.h"
 
 namespace Ui {
 class UnpackedWidget;
@@ -22,11 +23,14 @@ private:
     void initConnection();
     
 /////////////////////////////////////////////////////////////////////////
+signals:
+    void sendUnpackTask(TaskPtr tp);
 
 private slots:
     void atBtnInputClicked(bool b);
     void atBtnOutputClicked(bool b);
     void atBtnUnpackClicked(bool b);
+    void atUnpackTaskDone(int id);
 };
 
 #endif // UNPACKEDWIDGET_H

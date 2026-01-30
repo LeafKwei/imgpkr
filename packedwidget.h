@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QProgressDialog>
+#include "utility/task.h"
 
 namespace Ui {
 class PackedWidget;
@@ -17,7 +18,7 @@ public:
     ~PackedWidget();
 
 private:
-    bool m_contpack;
+    int m_taskid;
     Ui::PackedWidget *ui;
     QProgressDialog *m_dlgProgbar;
     
@@ -25,19 +26,20 @@ private:
     void initComponent();
     void initConnection();
     bool checkPrecondition();
-
+    TaskPtr makeTask();
+    void enablePackFunc();
+    void disablePackFunc();
+    
 /////////////////////////////////////////////////////////////////////////
 
 signals:
-    void startPack(int cnt);
-    void increProgbar(int inc);
-    void donePack();
+    void sendPackTask(TaskPtr tp);
 
 private slots:
     void atBtnInputClicked(bool b);
     void atBtnOutputClicked(bool b);
     void atBtnPackClicked(bool b);
-    void atPackCanceled();
+    void atPackTaskDone(int id);
 };
 
 #endif // PACKEDWIDGET_H

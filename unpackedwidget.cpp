@@ -48,3 +48,7 @@ void UnpackedWidget::atBtnOutputClicked(bool b){
 void UnpackedWidget::atBtnUnpackClicked(bool b){
 
 }
+
+void UnpackedWidget::atUnpackTaskDone(int id){
+    //todo
+}

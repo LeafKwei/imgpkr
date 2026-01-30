@@ -15,7 +15,7 @@ class TaskQueue
 public:
     explicit TaskQueue();
 
-    bool addTask(TaskPtr tp);
+    void addTask(TaskPtr tp);
     TaskPtr takeTask();
 
 private:

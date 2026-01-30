@@ -1,6 +1,7 @@
-#include <QThread>
 #include <QMessageBox>
+#include <QFileDialog>
 #include "packedwidget.h"
+#include "task/taskpack.h"
 #include "ui_packedwidget.h"
 
 PackedWidget::PackedWidget(QWidget *parent)
@@ -32,7 +33,6 @@ void PackedWidget::initConnection(){
     connect(ui -> btnInput, SIGNAL(clicked(bool)), this, SLOT(atBtnInputClicked(bool)));
     connect(ui -> btnOutput, SIGNAL(clicked(bool)), this, SLOT(atBtnOutputClicked(bool)));
     connect(ui -> btnPack, SIGNAL(clicked(bool)), this, SLOT(atBtnPackClicked(bool)));
-    connect(m_dlgProgbar, SIGNAL(canceled()), this, SLOT(atPackCanceled()));
 }
 
 /* 检查打包前的所有预置条件是否满足 */
@@ -47,6 +47,24 @@ bool PackedWidget::checkPrecondition(){
     }
     
     return true;
+}
+
+TaskPtr PackedWidget::makeTask(){
+    TaskPtr tp(new TaskPack(
+        makeRandomID(ID_BOUND),
+        ui -> btnInput -> text(), 
+        ui -> btnOutput -> text())
+    );
+    
+    return tp;
+}
+
+void PackedWidget::enablePackFunc(){
+    ui -> btnPack -> setDisabled(false);
+}
+
+void PackedWidget::disablePackFunc(){
+    ui -> btnPack -> setDisabled(true);
 }
 
 ///////////////////////////////////////////////////////////////////////// SLOT
@@ -72,26 +90,26 @@ void PackedWidget::atBtnOutputClicked(bool b){
 }
 
 void PackedWidget::atBtnPackClicked(bool b){
-    QVector<QString> filenames;
-    const QString inpath = ui -> editInput -> text();
-    const QString outpath = ui -> editOutput -> text();
-    
     /* 检查预置条件 */
     if(!checkPrecondition()){
         QMessageBox::warning(this, tr("错误"), tr("未选择正确的目录"));
         return;
     }
     
-    /* 获取选定目录下的所有文件名称 */
-    if(getAllPictureNameFrom(filenames, inpath) == 0){
-        QMessageBox::warning(this, tr("错误"), tr("选择的目录下没有任何png文件"));
+    /* 当预置条件验证完毕后，禁用打包功能，随后创建Task并通过信号通知mainwidget处理 */
+    disablePackFunc();
+    auto tp = makeTask();
+    m_taskid = tp -> id();
+    emit sendPackTask(tp);
+}
+
+void PackedWidget::atPackTaskDone(int id){
+    /* 检查任务id是否等于自身派发的任务id，如果不是则忽略 */
+    if(id != m_taskid && (-id) != m_taskid){
         return;
     }
     
-    m_contpack = true;
-    //todo 发送打包信号到mainwidget
-}
-
-void PackedWidget::atPackCanceled(){
-    m_contpack = false;
+    m_taskid = -1; //任务完成后，将taskid置为负数
+    qDebug() << "Task " << id << " Done.";
+    enablePackFunc();
 }

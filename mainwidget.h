@@ -2,6 +2,8 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
+#include "packedwidget.h"
+#include "unpackedwidget.h"
 #include "utility/taskthreadpool.h"
 
 namespace Ui {
@@ -23,6 +25,8 @@ private:
     
     void initialize();
     void initConnection();
+    void connectPackedWidget(PackedWidget *widget);
+    void connectUnpackedWidget(UnpackedWidget *widget);
     void deleteItem(int index);
     void deleteProject(int index);
     void doActionPack();
@@ -35,9 +39,12 @@ private:
 private slots:
     void atMenuNewTriggered(QAction *act);
     void atMenuEditTriggered(QAction *act);
+    void atTaskDone(int id);
+    void atTaskRecv(TaskPtr tp);
     
 signals:
     void projectItemChange(int);
+    void taskDoneFromMain(int id);
 };
 
 #endif // MAINWIDGET_H

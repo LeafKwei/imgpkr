@@ -3,6 +3,9 @@
 
 #include <QSharedPointer>
 #include "ONLYTEST.h"
+#include "utility.h"
+
+constexpr int ID_BOUND = 100000;
 
 class Task
 {

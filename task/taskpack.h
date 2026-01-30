@@ -7,10 +7,13 @@
 class TaskPack : public Task
 {
 public:
-    TaskPack(int id);
+    TaskPack(int id, const QString &inpath, const QString &outpath);
     int executeTask() override;
     
 private:
+    QString m_inpath;
+    QString m_outpath;
+    QVector<QString> m_filenames;
     int getAllPictureNameFrom(QVector<QString> &names, QString path);
 };
 

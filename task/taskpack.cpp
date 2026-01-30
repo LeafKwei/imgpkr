@@ -2,10 +2,18 @@
 #include <QFileDialog>
 #include "taskpack.h"
 
-TaskPack::TaskPack(int id) : Task(id){}
+TaskPack::TaskPack(int id, const QString &inpath, const QString &outpath)
+    : Task(id)
+    , m_inpath(inpath)
+    , m_outpath(outpath)
+{
+    
+}
 
 int TaskPack::executeTask(){
     //todo 实现图片打包功能
+    QThread::sleep(5);
+    return 0;
 }
 
 int TaskPack::getAllPictureNameFrom(QVector<QString> &names, QString path){

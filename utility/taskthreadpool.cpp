@@ -8,13 +8,9 @@ TaskThreadPool::TaskThreadPool(QObject *parent, int trdcnt, TaskQueue *tskque)
     initThreads(trdcnt);
 }
 
-void TaskThreadPool::pushTask(Task *task){
-    
-}
-
 void TaskThreadPool::initThreads(int trdcnt){
     for(int i = 0; i < trdcnt; i++){
-        auto thread = new TaskThread(this, &m_tskque);
+        auto thread = new TaskThread(this, m_tskque);
         connect(thread, SIGNAL(threadTaskDone(int)), this, SLOT(atThreadTaskDone(int)));
         m_threads.push_back(thread);
     }

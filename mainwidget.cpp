@@ -10,7 +10,7 @@
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
-    , m_threadpool(this, 9)
+    , m_threadpool(this, 9, &m_tskque)
 {
     ui->setupUi(this);
     initialize();
@@ -22,12 +22,22 @@ MainWidget::~MainWidget()
 }
 
 void MainWidget::initialize(){
-    m_threadpool.pushTask(nullptr);
     initConnection();
 }
 
 void MainWidget::initConnection(){
     connect(ui -> wgtProjectItem, SIGNAL(currentRowChanged(int)), ui -> wgtProject, SLOT(setCurrentIndex(int)));
+    connect(&m_threadpool, SIGNAL(taskDone(int)), this, SLOT(atTaskDone(int)));
+}
+
+void MainWidget::connectPackedWidget(PackedWidget *widget){
+    connect(this, SIGNAL(taskDoneFromMain(int)), widget, SLOT(atPackTaskDone(int)));
+    connect(widget, SIGNAL(sendPackTask(TaskPtr)), this, SLOT(atTaskRecv(TaskPtr)));
+}
+
+void MainWidget::connectUnpackedWidget(UnpackedWidget *widget){
+    connect(this, SIGNAL(taskDoneFromMain(int)), widget, SLOT(atUnpackTaskDone(int)));
+    connect(widget, SIGNAL(sendUnpackTask(TaskPtr)), this, SLOT(atTaskRecv(TaskPtr)));
 }
 
 void MainWidget::deleteItem(int index){
@@ -50,7 +60,9 @@ void MainWidget::doActionPack(){
      * 随后发送信号给mainwindow以更新主窗口视图
      */
     ui -> wgtProjectItem -> addItem("新建打包项目");
-    ui -> wgtProject -> addWidget(new PackedWidget());
+    auto wgt = new PackedWidget(this);
+    connectPackedWidget(wgt);
+    ui -> wgtProject -> addWidget(wgt);
     emit projectItemChange(ui -> wgtProjectItem -> count());
 }
 
@@ -60,7 +72,9 @@ void MainWidget::doActionUnpack(){
      * 随后发送信号给mainwindow以更新主窗口视图
      */
     ui -> wgtProjectItem -> addItem("新建解包项目");
-    ui -> wgtProject -> addWidget(new UnpackedWidget());
+    auto wgt = new UnpackedWidget(this);
+    connectUnpackedWidget(wgt);
+    ui -> wgtProject -> addWidget(wgt);
     emit projectItemChange(ui -> wgtProjectItem -> count());
 }
 
@@ -90,6 +104,20 @@ void MainWidget::atMenuNewTriggered(QAction *act){
 
 void MainWidget::atMenuEditTriggered(QAction *act){
     if(act -> text() == "删除") doActionDelete();
+}
+
+void MainWidget::atTaskDone(int id){
+    //todo 更新显示的任务数量和状态
+    emit taskDoneFromMain(id);
+}
+
+void MainWidget::atTaskRecv(TaskPtr tp){
+    if(tp == nullptr){
+        return;
+    }
+    
+    m_tskque.addTask(tp);
+    //todo 显示正在处理的任务数量(通过自绘)
 }
 
 
