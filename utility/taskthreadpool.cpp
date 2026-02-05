@@ -1,5 +1,5 @@
-#include "taskthread.h"
-#include "taskthreadpool.h"
+#include "utility/taskthread.h"
+#include "utility/taskthreadpool.h"
 
 TaskThreadPool::TaskThreadPool(QObject *parent, int trdcnt, TaskQueue *tskque)
     : QObject{parent}

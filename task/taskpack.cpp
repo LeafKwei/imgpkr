@@ -1,6 +1,10 @@
 #include <QDir>
 #include <QFileDialog>
-#include "taskpack.h"
+#include "task/taskpack.h"
+#include "3rdimpl/qtpngreader.h"
+#include "3rdinclude/packer/impl/Packer.hpp"
+
+using packer::Packer;
 
 TaskPack::TaskPack(int id, const QString &inpath, const QString &outpath)
     : Task(id)
@@ -11,8 +15,14 @@ TaskPack::TaskPack(int id, const QString &inpath, const QString &outpath)
 }
 
 int TaskPack::executeTask(){
-    //todo 实现图片打包功能
-    QThread::sleep(5);
+    Packer packer;
+    QVector<QString> names;
+    
+    getAllPictureNameFrom(names, m_inpath);
+    for(auto &name : names){
+        //todo 生成Reader对象
+    }
+    
     return 0;
 }
 
@@ -20,6 +30,7 @@ int TaskPack::getAllPictureNameFrom(QVector<QString> &names, QString path){
     QDir dir(path);
     
     if(!dir.exists()){
+        qDebug() << "Don't exists: " << path;
         return 0;
     }
     

@@ -52,8 +52,8 @@ bool PackedWidget::checkPrecondition(){
 TaskPtr PackedWidget::makeTask(){
     TaskPtr tp(new TaskPack(
         makeRandomID(ID_BOUND),
-        ui -> btnInput -> text(), 
-        ui -> btnOutput -> text())
+        ui -> editInput -> text(),
+        ui -> editOutput -> text())
     );
     
     return tp;
@@ -95,7 +95,7 @@ void PackedWidget::atBtnPackClicked(bool b){
         QMessageBox::warning(this, tr("错误"), tr("未选择正确的目录"));
         return;
     }
-    
+
     /* 当预置条件验证完毕后，禁用打包功能，随后创建Task并通过信号通知mainwidget处理 */
     disablePackFunc();
     auto tp = makeTask();

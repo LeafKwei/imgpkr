@@ -42,6 +42,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 		task/taskpack.h task/taskpack.cpp
 		task/taskunpack.h task/taskunpack.cpp
 		utility/utility.h
+		3rdimpl/3rdtool.h
+		3rdimpl/globalconf.h 3rdimpl/globalconf.cpp
 		
 		
 		

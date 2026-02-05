@@ -5,8 +5,8 @@
 #include <QVector>
 #include <QMutex>
 #include <QWaitCondition>
-#include "ONLYTEST.h"
-#include "taskqueue.h"
+#include "utility/ONLYTEST.h"
+#include "utility/taskqueue.h"
 
 class TaskThread;
 

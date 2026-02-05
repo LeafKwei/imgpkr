@@ -1,5 +1,5 @@
 #include <QMutexLocker>
-#include "taskqueue.h"
+#include "utility/taskqueue.h"
 
 TaskQueue::TaskQueue()
 {}

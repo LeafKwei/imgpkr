@@ -1,5 +1,5 @@
 #include <QtDebug>
-#include "taskthread.h"
+#include "utility/taskthread.h"
 
 TaskThread::TaskThread(QObject *parent, TaskQueue *tskque)
     : QThread{parent}

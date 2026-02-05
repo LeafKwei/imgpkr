@@ -5,8 +5,8 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QWaitCondition>
-#include "ONLYTEST.h"
-#include "task.h"
+#include "utility/ONLYTEST.h"
+#include "utility/task.h"
 
 class Task;
 

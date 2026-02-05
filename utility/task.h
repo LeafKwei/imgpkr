@@ -2,8 +2,8 @@
 #define TASK_H
 
 #include <QSharedPointer>
-#include "ONLYTEST.h"
-#include "utility.h"
+#include "utility/ONLYTEST.h"
+#include "utility/utility.h"
 
 constexpr int ID_BOUND = 100000;
 
